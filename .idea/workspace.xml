@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46178f0d-21fe-4277-aeb1-2134796fbb20" name="Changes" comment="Payments class work and creation of income.fxml">
+    <list default="true" id="46178f0d-21fe-4277-aeb1-2134796fbb20" name="Changes" comment="finished payments class">
+      <change afterPath="$PROJECT_DIR$/src/Resources/OtherPayments" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/TypeTotals" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/WorkPayments" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Balance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Balance.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Java/Planner/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Java/Planner/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Resources/Income.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Resources/Income.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Income.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Income.fxml" afterDir="false" />
@@ -114,11 +116,20 @@
       <option name="project" value="LOCAL" />
       <updated>1732095212685</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finished payments class">
+      <option name="closed" value="true" />
+      <created>1732098063112</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732098063113</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Payments class work and creation of income.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payments class work and creation of income.fxml" />
+    <MESSAGE value="finished payments class" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished payments class" />
   </component>
 </project>

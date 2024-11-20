@@ -35,7 +35,7 @@
             </children>
         </HBox>
       <Button fx:id="BackButton" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="13.0" prefWidth="100.0" styleClass="main-button" text="BACK" />
-      <TextField fx:id="incomeInput" layoutX="14.0" layoutY="109.0" onAction="#handleIncreaseBalance" prefHeight="25.0" prefWidth="359.0" />
-      <TextArea fx:id="balanceDisplay" editable="false" layoutX="14.0" layoutY="161.0" maxWidth="409.0" minWidth="100.0" prefHeight="39.0" prefWidth="409.0" />
+      <TextField fx:id="incomeInput" layoutX="14.0" layoutY="109.0" onAction="#handleIncreaseBalance" prefHeight="25.0" prefWidth="359.0" promptText="Enter amount followed by type (work or other)" />
+      <TextArea fx:id="balanceDisplay" editable="false" layoutX="14.0" layoutY="161.0" maxWidth="409.0" minWidth="100.0" prefHeight="90.0" prefWidth="409.0" />
     </children>
 </Pane>

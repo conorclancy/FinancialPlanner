@@ -120,27 +120,122 @@ public class Controller {
 
         }
     }
-    @FXML
-    private void handleIncreaseBalance() { //Class for increasing the balance
+    private static final String TYPE_TOTALS_FILE_PATH = "TypeTotals.txt"; // Path for type-specific totals file
+
+    private void updateTypeTotals(String type, double amount) {
         try {
-            double amount = Double.parseDouble(incomeInput.getText().trim());
-            if (amount <= 0) {
-                balanceDisplay.setText("Error: Cannot receive a negative amount");
+            // Initialize totals
+            double workTotal = 0.0;
+            double otherTotal = 0.0;
+
+            // Read existing totals if file exists
+            if (Files.exists(Paths.get(TYPE_TOTALS_FILE_PATH))) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(TYPE_TOTALS_FILE_PATH))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        String[] parts = line.split(":");
+                        if (parts.length == 2) {
+                            if (parts[0].trim().equalsIgnoreCase("work")) {
+                                workTotal = Double.parseDouble(parts[1].trim());
+                            } else if (parts[0].trim().equalsIgnoreCase("other")) {
+                                otherTotal = Double.parseDouble(parts[1].trim());
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Update the appropriate total
+            if (type.equals("work")) {
+                workTotal += amount;
+            } else if (type.equals("other")) {
+                otherTotal += amount;
+            }
+
+            // Write the updated totals back to the file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(TYPE_TOTALS_FILE_PATH))) {
+                writer.write("work:" + workTotal + System.lineSeparator());
+                writer.write("other:" + otherTotal + System.lineSeparator());
+            }
+        } catch (IOException e) {
+            System.err.println("Error updating type totals: " + e.getMessage());
+        }
+    }
+
+    private double[] readTypeTotals() {
+        double workTotal = 0.0;
+        double otherTotal = 0.0;
+
+        try {
+            if (Files.exists(Paths.get(TYPE_TOTALS_FILE_PATH))) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(TYPE_TOTALS_FILE_PATH))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        String[] parts = line.split(":");
+                        if (parts.length == 2) {
+                            if (parts[0].trim().equalsIgnoreCase("work")) {
+                                workTotal = Double.parseDouble(parts[1].trim());
+                            } else if (parts[0].trim().equalsIgnoreCase("other")) {
+                                otherTotal = Double.parseDouble(parts[1].trim());
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading type totals: " + e.getMessage());
+        }
+
+        return new double[]{workTotal, otherTotal};
+    }
+
+    @FXML
+    private void handleIncreaseBalance() {
+        try {
+            String[] inputParts = incomeInput.getText().trim().split("\\s+"); // Split input by spaces
+            if (inputParts.length != 2) {
+                balanceDisplay.setText("Error: Enter in format '<amount> <type>' (e.g., '200 work').");
                 return;
             }
+
+            double amount = Double.parseDouble(inputParts[0]);
+            String type = inputParts[1].toLowerCase();
+
+            if (amount <= 0 || (!type.equals("work") && !type.equals("other"))) {
+                balanceDisplay.setText("Error: Invalid amount or type. Type must be 'work' or 'other'.");
+                return;
+            }
+
+            // Update balance
             balance += amount;
 
+            // Update the type-specific totals in the file
+            updateTypeTotals(type, amount);
+
+            // Save balance to file
             saveBalance();
 
-            balanceDisplay.setText("Current Balance: " + String.format("%.2f", balance));
+            // Get the updated totals
+            double[] totals = readTypeTotals();
+            double workTotal = totals[0];
+            double otherTotal = totals[1];
+
+            // Update display
+            balanceDisplay.setText(
+                    "Current Balance: " + String.format("%.2f", balance) + "\n" +
+                            "Work Total: " + String.format("%.2f", workTotal) + "\n" +
+                            "Other Total: " + String.format("%.2f", otherTotal)
+            );
             incomeInput.clear();
         } catch (NumberFormatException e) {
-            balanceDisplay.setText("Error: Invalid amount entered.");
+            balanceDisplay.setText("Error: Invalid input. Enter in format '<amount> <type>'.");
         }
     }
 
 
-     // Initializes the controller.
+
+
+    // Initializes the controller.
 
     @FXML
     private void initialize() {
