@@ -1,0 +1,111 @@
+/* Root Pane */
+.root {
+    -fx-background-color: #1E1E1E; /* Dark theme background */
+    -fx-font-size: 15px;
+    -fx-font-family: "Arial";
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #17A589;  /* Turquoise color */
+    -fx-text-fill: white;           /* White text for contrast */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;               /* Cursor changes to pointer on hover */
+    -fx-border-color: transparent; /* No visible border by default */
+}
+
+.button:hover {
+    -fx-background-color: #138D75; /* Slightly darker turquoise on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #0E6655; /* Darker shade for active state */
+}
+
+/* Custom Title Bar */
+.custom-title-bar {
+    -fx-background-color: #17A589; /* Turquoise background for the title bar */
+    -fx-padding: 5px;
+    -fx-text-fill: white;
+}
+
+/* Title Label */
+.title-label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;           /* Slightly larger font size for titles */
+    -fx-font-weight: bold;
+    -fx-background-color: transparent; /* Keep label background transparent */
+    -fx-padding: 0 10px;
+}
+
+/* Title Buttons */
+.title-button {
+    -fx-background-color: transparent; /* Transparent background for subtle look */
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;                /* Hand cursor for interactivity */
+    -fx-border-radius: 3;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+.title-button:hover {
+    -fx-background-color: #138D75;  /* Slightly darker turquoise on hover */
+    -fx-text-fill: white;
+}
+
+.title-button:pressed {
+    -fx-background-color: #0E6655;  /* Darker turquoise for active state */
+}
+
+/* Text Area */
+.text-area {
+    -fx-background-color: #2C2C2C; /* Slightly lighter dark gray background */
+    -fx-control-inner-background: #2C2C2C; /* Inner area matches background */
+    -fx-text-fill: white;          /* White text for better contrast */
+    -fx-font-size: 13px;
+    -fx-padding: 10px 15px;
+    -fx-border-color: #17A589;    /* Turquoise border for focus */
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-focus-color: #138D75;     /* Focus color on interaction */
+    -fx-faint-focus-color: transparent; /* No faint focus outline */
+}
+
+/* Labels */
+.header-label {
+    -fx-text-fill: #17A589; /* Turquoise text for headers */
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0;
+}
+
+/* Hover State for Back Button */
+#BackButton:hover {
+    -fx-background-color: #138D75; /* Slightly darker turquoise */
+    -fx-text-fill: white;
+}
+
+/* Main Buttons */
+.main-button {
+    -fx-background-color: #17A589; /* Consistent turquoise button color */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 10px 20px;
+    -fx-border-color: transparent;
+}
+
+.main-button:hover {
+    -fx-background-color: #138D75; /* Slightly darker on hover */
+}
+
+.main-button:pressed {
+    -fx-background-color: #0E6655; /* Darker shade for active state */
+}

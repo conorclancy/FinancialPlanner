@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Planner.Controller">
+   <children>
+      <!-- Title Bar -->
+      <HBox fx:id="TitleBar" prefHeight="50.0" prefWidth="600.0" styleClass="title-bar">
+         <children>
+            <Label fx:id="TitleLabel" maxWidth="Infinity" prefHeight="50.0" styleClass="title-label" text="Upcoming Payments">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="button-group" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="MinimiseButton" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="30.0" prefWidth="30.0" styleClass="title-button" text="−" />
+                  <Button fx:id="MaximiseButton" mnemonicParsing="false" onAction="#handleMaximize" prefHeight="30.0" prefWidth="30.0" styleClass="title-button" text="⬜" />
+                  <Button fx:id="CloseButton" mnemonicParsing="false" onAction="#handleClose" prefHeight="30.0" prefWidth="30.0" styleClass="title-button" text="X" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+
+      <!-- Content Section -->
+      <VBox alignment="CENTER" layoutY="50.0" prefHeight="390.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <!-- Back Button -->
+            <Button fx:id="BackButton" mnemonicParsing="false" onAction="#switchToScene1" styleClass="main-button" text="BACK">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </Button>
+
+            <!-- Balance Display -->
+            <TextArea fx:id="balanceDisplay" editable="false" maxWidth="100.0" minWidth="200.0" prefHeight="75.0" prefWidth="400.0" styleClass="text-area">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextArea>
+
+            <!-- Header Label -->
+            <Label styleClass="header-label" text="Manage Your Payments Below:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+
+            <!-- Payment Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="ViewPaymentsButton" mnemonicParsing="false" onAction="#switchToScene3" prefHeight="50.0" prefWidth="180.0" styleClass="main-button" text="View Payments" />
+                  <Button fx:id="AddPaymentButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" styleClass="main-button" text="Add Payment" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
