@@ -39,7 +39,12 @@ public class Controller {
     private TextArea balanceDisplay;
 
     @FXML
-    private TextField amountInput; // Input field for withdrawal amount
+    private TextField amountInput;
+
+    @FXML
+    private TextField incomeInput;
+
+    // Input field for withdrawal amount
 
     private double balance; // Holds the current balance
 
@@ -48,7 +53,7 @@ public class Controller {
     private Stage stage;
     private Scene scene;
 
-    private static final String BALANCE_FILE_PATH = "Balance.txt"; // Path to a writable file (local directory)
+    private static final String BALANCE_FILE_PATH = "Balance.txt"; // Path ot the Balance.txt file
 
     /**
      * Reads the balance from a file.
@@ -85,11 +90,8 @@ public class Controller {
         }
     }
 
-    /**
-     * Handles decreasing the balance.
-     */
     @FXML
-    private void handleDecreaseBalance() {
+    private void handleDecreaseBalance() { //Class for decreasing the balance
         try {
             double amount = Double.parseDouble(amountInput.getText().trim());
 
@@ -115,12 +117,31 @@ public class Controller {
 
         } catch (NumberFormatException e) {
             balanceDisplay.setText("Error: Invalid amount entered.");
+
+        }
+    }
+    @FXML
+    private void handleIncreaseBalance() { //Class for increasing the balance
+        try {
+            double amount = Double.parseDouble(incomeInput.getText().trim());
+            if (amount <= 0) {
+                balanceDisplay.setText("Error: Cannot receive a negative amount");
+                return;
+            }
+            balance += amount;
+
+            saveBalance();
+
+            balanceDisplay.setText("Current Balance: " + String.format("%.2f", balance));
+            incomeInput.clear();
+        } catch (NumberFormatException e) {
+            balanceDisplay.setText("Error: Invalid amount entered.");
         }
     }
 
-    /**
-     * Initializes the controller.
-     */
+
+     // Initializes the controller.
+
     @FXML
     private void initialize() {
         loadBalance(); // Load the balance on startup
@@ -141,9 +162,7 @@ public class Controller {
         });
     }
 
-    /**
-     * Switch to Financial Planner Home scene.
-     */
+    // Switches to the home screen (for the back buttons)
     public void switchToScene1(ActionEvent event) throws IOException {
         loadBalance(); // Load balance before switching
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Financial Planner Home.fxml"));
@@ -162,9 +181,7 @@ public class Controller {
         stage.show();
     }
 
-    /**
-     * Sets the current balance and updates the display if available.
-     */
+    //Sets the balance
     public void setBalance(double newBalance) {
         this.balance = newBalance;
 
@@ -174,9 +191,7 @@ public class Controller {
         }
     }
 
-    /**
-     * Switch to Payments scene.
-     */
+   //Switches to the Payments.fxml file
     public void switchToScene2(ActionEvent event) throws IOException {
         loadBalance(); // Load balance before switching
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Payments.fxml"));
@@ -194,7 +209,7 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-
+//Switches to the Payment Categories Screen
     public void switchToScene3(ActionEvent event) throws IOException {
         loadBalance(); // Load balance before switching
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/PaymentCategories.fxml"));
